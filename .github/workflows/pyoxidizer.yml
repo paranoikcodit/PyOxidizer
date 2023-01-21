@@ -40,10 +40,12 @@ jobs:
           chmod +x pyoxidizer
           ./pyoxidizer init-config-file myapp
           ./pyoxidizer build --path myapp
+          RUST_BACKTRACE=1 ./myapp/build/x86_64-unknown-linux-gnu/debug/install/myapp
 
       - name: Spot Test (musl Cross)
         run: |
           ./pyoxidizer build --path myapp --target-triple x86_64-unknown-linux-musl
+          RUST_BACKTRACE=1 ./myapp/build/x86_64-unknown-linux-musl/debug/install/myapp
 
   pyoxidizer-macos-universal-exe-check:
     needs:
